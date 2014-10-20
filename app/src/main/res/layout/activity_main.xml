@@ -35,7 +35,7 @@
                     android:gravity="center"
                     android:textSize="40sp"
                     android:text="Chiang mai"
-                    android:id="@+id/textView"
+                    android:id="@+id/name"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -53,7 +53,7 @@
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:gravity="center"
                     android:text="Mostly Cloudy"
-                    android:id="@+id/textView2"
+                    android:id="@+id/main"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true" />
 
@@ -72,7 +72,7 @@
                     android:gravity="center"
                     android:textSize="70sp"
                     android:text="27°"
-                    android:id="@+id/textView"
+                    android:id="@+id/temp"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -90,8 +90,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
                     android:textSize="28sp"
-                    android:text="sunrise :"
-                    android:id="@+id/textView"
+                    android:text="Sunrise :"
+                    android:id="@+id/sunriseTxt"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -102,7 +102,7 @@
                     android:gravity="left"
                     android:textSize="28sp"
                     android:text=" 6:20 AM"
-                    android:id="@+id/textView"
+                    android:id="@+id/sunrise"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -120,8 +120,8 @@
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
                     android:textSize="28sp"
-                    android:text="sunset :"
-                    android:id="@+id/textView"
+                    android:text="Sunset :"
+                    android:id="@+id/sunsetTxt"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -132,7 +132,7 @@
                     android:gravity="left"
                     android:textSize="28sp"
                     android:text=" 5:58 PM"
-                    android:id="@+id/textView"
+                    android:id="@+id/sunset"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -151,7 +151,7 @@
                     android:gravity="right"
                     android:textSize="28sp"
                     android:text="Humidity :"
-                    android:id="@+id/textView"
+                    android:id="@+id/humidityTxt"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -162,7 +162,7 @@
                     android:gravity="left"
                     android:textSize="28sp"
                     android:text=" 83 %"
-                    android:id="@+id/textView"
+                    android:id="@+id/humidity"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -181,7 +181,7 @@
                     android:gravity="right"
                     android:textSize="28sp"
                     android:text="Wind speed :"
-                    android:id="@+id/textView"
+                    android:id="@+id/windTxt"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -192,7 +192,7 @@
                     android:gravity="left"
                     android:textSize="28sp"
                     android:text=" 1 mps"
-                    android:id="@+id/textView"
+                    android:id="@+id/wind"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -211,7 +211,7 @@
                     android:gravity="right"
                     android:textSize="28sp"
                     android:text="Cloudiness :"
-                    android:id="@+id/textView"
+                    android:id="@+id/cloudinessTxt"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
@@ -222,7 +222,7 @@
                     android:gravity="left"
                     android:textSize="28sp"
                     android:text=" 75 %"
-                    android:id="@+id/textView"
+                    android:id="@+id/cloudiness"
                     android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
