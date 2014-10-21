@@ -2,8 +2,6 @@ package com.theweatherhere;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -17,7 +15,7 @@ public class MainActivity extends Activity {
     // GPSTracker class
     GPSTracker gps;
 
-    private String url = "http://api.openweathermap.org/data/2.5/weather?lat=18.7992741&lon=98.9742345";
+    private String url = "http://api.openweathermap.org/data/2.5/weather?lat=";
     private TextView name,main,temp,sunrise,sunset,humidity,wind,cloudiness;
     private HandleJSON obj;
 
@@ -42,10 +40,14 @@ public class MainActivity extends Activity {
             double latitude = gps.getLatitude();
             double longitude = gps.getLongitude();
 
-            String lat = Double.toString(latitude);
-            String lon = Double.toString(longitude);
+            String lat = String.format("%.2f", latitude);
+            String lon = String.format("%.2f", longitude);
+            String and = "&lon=";
 
-            String finalUrl = url;
+            //Log.e("lat",lat);
+            //Log.e("lng",lon);
+
+            String finalUrl = url + lat + and + lon;
             obj = new HandleJSON(finalUrl);
             obj.fetchJSON();
 
@@ -55,7 +57,10 @@ public class MainActivity extends Activity {
             TimeZone tz = TimeZone.getTimeZone("Asia/Bangkok");
             sdf.setTimeZone(tz);
 
+            //name
             name.setText(obj.getName());
+
+            //main
             main.setText(obj.getMain());
 
             //temperature
@@ -67,24 +72,24 @@ public class MainActivity extends Activity {
             //sunrise
             long timestampsunrise = Long.parseLong(obj.getSunrise()) * 1000;
             Date netDatesunrise = (new Date(timestampsunrise));
-            sunrise.setText(" " + sdf.format(netDatesunrise) + "AM");
+            sunrise.setText(" " + sdf.format(netDatesunrise) + " AM");
 
             //sunset
             long timestampsunset = Long.parseLong(obj.getSunset()) * 1000;
             Date netDatesunset = (new Date(timestampsunset));
-            sunset.setText(" " + sdf.format(netDatesunset) + "PM");
+            sunset.setText(" " + sdf.format(netDatesunset) + " PM");
 
             //humidity
             String humidityStr = obj.getHumidity();
-            humidity.setText(" " + humidityStr + "%");
+            humidity.setText(" " + humidityStr + " %");
 
             //wind
             String windStr = obj.getWind();
-            wind.setText(windStr + " mps");
+            wind.setText(" " + windStr + " mps");
 
             //cloudiness
             String cloudinessStr = obj.getCloudiness();
-            cloudiness.setText("" + cloudinessStr + "%");
+            cloudiness.setText(" " + cloudinessStr + " %");
 
         }else{
             // can't get location
@@ -95,22 +100,4 @@ public class MainActivity extends Activity {
 
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }

@@ -57,9 +57,11 @@ public class HandleJSON {
 
             name = reader.getString("name");
 
-            //JSONArray jArray = new JSONArray(in);
-            //JSONObject json_data = jArray.getJSONObject(0);
-            //main = json_data.getString("main");
+            JSONArray jArray = reader.getJSONArray("weather");
+            for (int i=0; i < jArray.length(); i++) {
+                JSONObject json_data = jArray.getJSONObject(i);
+                main = json_data.getString("description");
+            }
 
             JSONObject mainApi  = reader.getJSONObject("main");
             temp = mainApi.getString("temp");
