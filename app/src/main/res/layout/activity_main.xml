@@ -5,32 +5,32 @@
     tools:context=".MainActivity">
 
     <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
         android:id="@+id/scrollView"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" >
 
         <TableLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
             android:stretchColumns="1">
 
             <Space
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="50px"
                 android:layout_alignParentBottom="true"
                 android:layout_centerHorizontal="true"/>
 
             <!-- Row 1 with single column -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="center"
                     android:textSize="40sp"
@@ -43,13 +43,13 @@
 
             <!-- Row 2 with single column -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:gravity="center"
                     android:text="Mostly Cloudy"
@@ -61,13 +61,13 @@
 
             <!-- Row 3 with single column -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="center"
                     android:textSize="70sp"
@@ -80,13 +80,13 @@
 
             <!-- Row 4 with 2 columns -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
                     android:textSize="28sp"
@@ -97,7 +97,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
                     android:textSize="28sp"
@@ -110,13 +110,13 @@
 
             <!-- Row 5 with 2 columns -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
                     android:textSize="28sp"
@@ -127,7 +127,7 @@
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="fill_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
                     android:textSize="28sp"
@@ -140,8 +140,8 @@
 
             <!-- Row 6 with 2 columns -->
             <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_width="match_parent"
                 android:gravity="center_horizontal">
 
                 <TextView

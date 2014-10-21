@@ -4,6 +4,7 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import android.annotation.SuppressLint;
@@ -56,8 +57,9 @@ public class HandleJSON {
 
             name = reader.getString("name");
 
-            //JSONObject weatherApi  = reader.getJSONObject("weather");
-            //main = weatherApi.getString("main");
+            //JSONArray jArray = new JSONArray(in);
+            //JSONObject json_data = jArray.getJSONObject(0);
+            //main = json_data.getString("main");
 
             JSONObject mainApi  = reader.getJSONObject("main");
             temp = mainApi.getString("temp");

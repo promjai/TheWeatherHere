@@ -4,9 +4,12 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 public class MainActivity extends Activity {
@@ -48,14 +51,40 @@ public class MainActivity extends Activity {
 
             while(obj.parsingComplete);
 
+            DateFormat sdf = new SimpleDateFormat("HH:mm");
+            TimeZone tz = TimeZone.getTimeZone("Asia/Bangkok");
+            sdf.setTimeZone(tz);
+
             name.setText(obj.getName());
             main.setText(obj.getMain());
-            temp.setText(obj.getTemp());
-            sunrise.setText(obj.getSunrise());
-            sunset.setText(obj.getSunset());
-            humidity.setText(obj.getHumidity());
-            wind.setText(obj.getWind());
-            cloudiness.setText(obj.getCloudiness());
+
+            //temperature
+            String kelvin = obj.getTemp();
+            double kel = Double.valueOf(kelvin).doubleValue() - 272.15;
+            String temperature = Double.toString(kel);
+            temp.setText(temperature + "°");
+
+            //sunrise
+            long timestampsunrise = Long.parseLong(obj.getSunrise()) * 1000;
+            Date netDatesunrise = (new Date(timestampsunrise));
+            sunrise.setText(" " + sdf.format(netDatesunrise) + "AM");
+
+            //sunset
+            long timestampsunset = Long.parseLong(obj.getSunset()) * 1000;
+            Date netDatesunset = (new Date(timestampsunset));
+            sunset.setText(" " + sdf.format(netDatesunset) + "PM");
+
+            //humidity
+            String humidityStr = obj.getHumidity();
+            humidity.setText(" " + humidityStr + "%");
+
+            //wind
+            String windStr = obj.getWind();
+            wind.setText(windStr + " mps");
+
+            //cloudiness
+            String cloudinessStr = obj.getCloudiness();
+            cloudiness.setText("" + cloudinessStr + "%");
 
         }else{
             // can't get location
