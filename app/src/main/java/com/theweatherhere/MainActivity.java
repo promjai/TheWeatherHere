@@ -1,8 +1,17 @@
 package com.theweatherhere;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.core.assist.ImageScaleType;
+import com.nostra13.universalimageloader.core.display.FadeInBitmapDisplayer;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -16,6 +25,9 @@ public class MainActivity extends Activity {
     GPSTracker gps;
 
     private String url = "http://api.openweathermap.org/data/2.5/weather?lat=";
+    private ImageView icon;
+    private ImageLoader loader;
+    private DisplayImageOptions options;
     private TextView name,main,temp,sunrise,sunset,humidity,wind,cloudiness;
     private HandleJSON obj;
 
@@ -25,6 +37,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         name = (TextView) findViewById(R.id.name);
+        icon = (ImageView) findViewById(R.id.imgIcon);
         main = (TextView) findViewById(R.id.main);
         temp = (TextView) findViewById(R.id.temp);
         sunrise = (TextView) findViewById(R.id.sunrise);
@@ -44,8 +57,8 @@ public class MainActivity extends Activity {
             String lon = String.format("%.2f", longitude);
             String and = "&lon=";
 
-            //Log.e("lat",lat);
-            //Log.e("lng",lon);
+            Log.e("lat",lat);
+            Log.e("lng", lon);
 
             String finalUrl = url + lat + and + lon;
             obj = new HandleJSON(finalUrl);
@@ -54,19 +67,34 @@ public class MainActivity extends Activity {
             while(obj.parsingComplete);
 
             DateFormat sdf = new SimpleDateFormat("HH:mm");
-            TimeZone tz = TimeZone.getTimeZone("Asia/Bangkok");
+            TimeZone tz = TimeZone.getDefault();
             sdf.setTimeZone(tz);
 
             //name
             name.setText(obj.getName());
 
             //main
+            String urlStr = "http://openweathermap.org/img/w/" + obj.getIcon() + ".png";
+            Log.e("url",urlStr);
+
+            loader = ImageLoader.getInstance();
+            loader.init(ImageLoaderConfiguration
+                    .createDefault(getApplicationContext()));
+            options = new DisplayImageOptions.Builder()
+                    .showImageForEmptyUri(R.drawable.ic_launcher)
+                    .showImageOnFail(R.drawable.ic_launcher)
+                    .resetViewBeforeLoading(true).cacheOnDisc(true)
+                    .imageScaleType(ImageScaleType.EXACTLY)
+                    .bitmapConfig(Bitmap.Config.RGB_565).considerExifParams(true)
+                    .displayer(new FadeInBitmapDisplayer(300)).build();
+            loader.displayImage(urlStr, icon, options);
+
             main.setText(obj.getMain());
 
             //temperature
             String kelvin = obj.getTemp();
-            double kel = Double.valueOf(kelvin).doubleValue() - 272.15;
-            String temperature = Double.toString(kel);
+            double kel = Double.valueOf(kelvin).doubleValue() - 273.15;
+            String temperature = String.format("%.2f", kel);
             temp.setText(temperature + "°");
 
             //sunrise

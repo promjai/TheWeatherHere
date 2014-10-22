@@ -1,158 +1,99 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".MainActivity">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/scrollView"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true" >
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView2" >
 
-        <TableLayout
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:stretchColumns="1">
+            android:layout_height="match_parent">
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="50px"
-                android:layout_alignParentBottom="true"
-                android:layout_centerHorizontal="true"/>
+                android:layout_centerHorizontal="true" />
 
-            <!-- Row 1 with single column -->
-            <TableRow
-                android:layout_height="fill_parent"
+            <TextView
                 android:layout_width="match_parent"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:textSize="40sp"
+                android:id="@+id/name"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:gravity="center"
+                android:id="@+id/main"
+                android:layout_centerHorizontal="true" />
+
+            <ImageView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center"
+                android:id="@+id/imgIcon"
+                android:adjustViewBounds="false" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:gravity="center"
+                android:textSize="70sp"
+                android:id="@+id/temp"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center"
-                    android:textSize="40sp"
-                    android:text="Chiang mai"
-                    android:id="@+id/name"
-                    android:layout_alignTop="@+id/scrollView"
-                    android:layout_centerHorizontal="true" />
-
-            </TableRow>
-
-            <!-- Row 2 with single column -->
-            <TableRow
-                android:layout_height="fill_parent"
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:gravity="center"
-                    android:text="Mostly Cloudy"
-                    android:id="@+id/main"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true" />
-
-            </TableRow>
-
-            <!-- Row 3 with single column -->
-            <TableRow
-                android:layout_height="fill_parent"
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="center"
-                    android:textSize="70sp"
-                    android:text="27°"
-                    android:id="@+id/temp"
-                    android:layout_alignTop="@+id/scrollView"
-                    android:layout_centerHorizontal="true" />
-
-            </TableRow>
-
-            <!-- Row 4 with 2 columns -->
-            <TableRow
-                android:layout_height="fill_parent"
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
-                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:text="Sunrise :"
                     android:id="@+id/sunriseTxt"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
-                    android:textSize="28sp"
-                    android:text=" 6:20 AM"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:id="@+id/sunrise"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
-            </TableRow>
+            </LinearLayout>
 
-            <!-- Row 5 with 2 columns -->
-            <TableRow
-                android:layout_height="fill_parent"
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:gravity="center_horizontal">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
-                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:text="Sunset :"
                     android:id="@+id/sunsetTxt"
-                    android:layout_alignTop="@+id/scrollView"
-                    android:layout_centerHorizontal="true" />
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="fill_parent"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="left"
-                    android:textSize="28sp"
-                    android:text=" 5:58 PM"
-                    android:id="@+id/sunset"
-                    android:layout_alignTop="@+id/scrollView"
-                    android:layout_centerHorizontal="true" />
-
-            </TableRow>
-
-            <!-- Row 6 with 2 columns -->
-            <TableRow
-                android:layout_height="fill_parent"
-                android:layout_width="match_parent"
-                android:gravity="center_horizontal">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
-                    android:gravity="right"
-                    android:textSize="28sp"
-                    android:text="Humidity :"
-                    android:id="@+id/humidityTxt"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -160,29 +101,54 @@
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
-                    android:textSize="28sp"
-                    android:text=" 83 %"
-                    android:id="@+id/humidity"
-                    android:layout_alignTop="@+id/scrollView"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:id="@+id/sunset"
                     android:layout_centerHorizontal="true" />
 
-            </TableRow>
+            </LinearLayout>
 
-            <!-- Row 7 with 2 columns -->
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:gravity="center_horizontal">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
-                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:text="Humidity :"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="left"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
+                    android:id="@+id/humidity"
+                    android:layout_centerHorizontal="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:gravity="right"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:text="Wind speed :"
                     android:id="@+id/windTxt"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -190,29 +156,27 @@
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
-                    android:textSize="28sp"
-                    android:text=" 1 mps"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:id="@+id/wind"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
-            </TableRow>
+            </LinearLayout>
 
-            <!-- Row 8 with 2 columns -->
-            <TableRow
-                android:layout_height="wrap_content"
-                android:layout_width="fill_parent"
-                android:gravity="center_horizontal">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="right"
-                    android:textSize="28sp"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:text="Cloudiness :"
                     android:id="@+id/cloudinessTxt"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
                 <TextView
@@ -220,15 +184,19 @@
                     android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceLarge"
                     android:gravity="left"
-                    android:textSize="28sp"
-                    android:text=" 75 %"
+                    android:layout_weight="1"
+                    android:textSize="25sp"
                     android:id="@+id/cloudiness"
-                    android:layout_alignTop="@+id/scrollView"
                     android:layout_centerHorizontal="true" />
 
-            </TableRow>
+            </LinearLayout>
 
-            </TableLayout>
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="100px"
+                android:layout_centerHorizontal="true" />
+
+        </LinearLayout>
 
     </ScrollView>
 

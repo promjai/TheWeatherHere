@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 public class HandleJSON {
 
     private String name = "name";
+    private String icon = "icon";
     private String main = "main";
     private String temp = "temp";
     private String sunrise = "sunrise";
@@ -27,6 +28,9 @@ public class HandleJSON {
     }
     public String getName(){
         return name;
+    }
+    public String getIcon(){
+        return icon;
     }
     public String getMain(){
         return main;
@@ -60,6 +64,7 @@ public class HandleJSON {
             JSONArray jArray = reader.getJSONArray("weather");
             for (int i=0; i < jArray.length(); i++) {
                 JSONObject json_data = jArray.getJSONObject(i);
+                icon = json_data.getString("icon");
                 main = json_data.getString("description");
             }
 
