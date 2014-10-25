@@ -1,7 +1,13 @@
 package com.theweatherhere;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -47,6 +53,18 @@ public class MainActivity extends Activity {
         humidity = (TextView) findViewById(R.id.humidity);
         wind = (TextView) findViewById(R.id.wind);
         cloudiness = (TextView) findViewById(R.id.cloudiness);
+
+        if (isInternetConnected()) { // chack status internet
+            getData();
+        } else {
+            showAlertNoNet(); // chack status internet
+        }
+
+    }
+
+    //----------------------------------get Data from JSON-----------------------------------
+
+    public void getData() {
 
         // create class object
         gps = new GPSTracker(MainActivity.this);
@@ -114,7 +132,7 @@ public class MainActivity extends Activity {
             humidity.setText(" " + humidityStr + " %");
 
             //wind
-            String windStr = obj.getWind();
+            String windStr = String.format("%.2f", Double.valueOf(obj.getWind()).doubleValue());
             wind.setText(" " + windStr + " mps");
 
             //cloudiness
@@ -130,6 +148,42 @@ public class MainActivity extends Activity {
 
     }
 
+    //----------------------------------check internet-----------------------------------
+    private boolean isInternetConnected(){
+        ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if(networkInfo != null && networkInfo.isConnected()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    private void showAlertNoNet(){
+        AlertDialog.Builder alertDlg = new AlertDialog.Builder(this);
+
+        alertDlg.setMessage("Please connect to working Internet connection.")
+                .setTitle("Internet Connection Error")
+                .setIcon(R.drawable.ic_action_error)
+                .setCancelable(false)
+                .setPositiveButton("Settings", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent gpsOptionsIntent = new Intent(android.provider.Settings.ACTION_SETTINGS);
+                        startActivityForResult(gpsOptionsIntent, 0);
+                    }
+                });
+
+        alertDlg.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.cancel();
+            }
+        });
+
+        AlertDialog alert = alertDlg.create();
+        alert.show();
+    }
+
+    //----------------------------------menu-----------------------------------
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -144,8 +198,23 @@ public class MainActivity extends Activity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_share) {
+
+            Intent sharingIntent = new Intent(android.content.Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            String shareBody = "Here is the share content body";
+            //sharingIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "Subject Here");
+            sharingIntent.putExtra(android.content.Intent.EXTRA_TEXT, shareBody);
+            startActivity(Intent.createChooser(sharingIntent, "Share via"));
+
             return true;
         } else if (id == R.id.action_refresh) {
+
+            if (isInternetConnected()) { // chack status internet
+                getData();
+            } else {
+                showAlertNoNet(); // chack status internet
+            }
+
             return true;
         }
         return super.onOptionsItemSelected(item);
